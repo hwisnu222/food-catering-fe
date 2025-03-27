@@ -9,7 +9,7 @@ const menu = [
   },
   {
     anchor: "/products",
-    label: "Service",
+    label: "Menu",
   },
   {
     anchor: "/about",
@@ -23,10 +23,13 @@ export default function Header() {
       direction="row"
       padding={2}
       justifyContent="space-between"
+      alignItems="center"
       className="sticky top-0 bg-white z-30"
     >
       <Link href="/#" underline="none">
-        <Typography variant="h6">Food Catering</Typography>
+        <Typography variant="h6" fontWeight={700}>
+          Food Catering
+        </Typography>
       </Link>
       <Stack gap={5} direction="row" justifyContent="start" alignItems="center">
         {menu.map((item, index) => (
@@ -38,9 +41,6 @@ export default function Header() {
         ))}
       </Stack>
       <Stack direction="row" gap={2}>
-        <IconButton href="/order">
-          <LocalMall />
-        </IconButton>
         <Button variant="contained" size="small">
           Login
         </Button>

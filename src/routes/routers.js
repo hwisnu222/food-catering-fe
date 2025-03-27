@@ -23,7 +23,7 @@ export const routes = createBrowserRouter([
         Component: About,
       },
       {
-        path: "/order",
+        path: "/order/:id",
         Component: Order,
       },
       {

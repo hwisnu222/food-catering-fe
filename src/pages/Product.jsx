@@ -15,6 +15,7 @@ import {
 import React from "react";
 import { GET_CATEGORIES } from "../graphql/queries/category.query";
 import { GET_MENU } from "../graphql/queries/menu.query";
+import MenuCard from "../components/cards/MenuCard";
 
 export default function Product() {
   const { data } = useQuery(GET_CATEGORIES);
@@ -57,36 +58,7 @@ export default function Product() {
         justifyContent="space-between"
       >
         {dataMenu?.menuItems.map((menu, index) => (
-          <Card sx={{ width: 270 }}>
-            <CardMedia sx={{ height: 140 }} image={menu.image} title="menu" />
-            <CardContent>
-              <Stack gap={2}>
-                <Link href={`/products/${menu.id}`} underline="none">
-                  <Typography variant="h6">{menu.name}</Typography>
-                </Link>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  {menu.description}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  className="font-extrabold"
-                  fontWeight={500}
-                >
-                  {menu.basePrice}
-                </Typography>
-              </Stack>
-            </CardContent>
-
-            <CardActions fullWidth>
-              <Button
-                fullWidth
-                variant="contained"
-                startIcon={<ShoppingBagOutlined />}
-              >
-                Buy
-              </Button>
-            </CardActions>
-          </Card>
+          <MenuCard menu={menu} key={index} />
         ))}
       </Stack>
     </Container>
