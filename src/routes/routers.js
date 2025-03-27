@@ -1,12 +1,12 @@
 import Home from "../pages/Home";
 import Layout from "../components/layouts/Layout";
 import Product from "../pages/Product";
-import Cart from "../pages/Cart";
+import Order from "../pages/Order";
 import About from "../pages/About";
 import DetailProduct from "../pages/DetailProduct";
 import { createBrowserRouter } from "react-router";
 import AdminLayout from "../components/layouts/AdminLayout";
-import Order from "../pages/admin/Order";
+import OrderAdmin from "../pages/admin/Order";
 import ProductList from "../pages/admin/Product";
 
 export const routes = createBrowserRouter([
@@ -23,8 +23,8 @@ export const routes = createBrowserRouter([
         Component: About,
       },
       {
-        path: "/cart",
-        Component: Cart,
+        path: "/order",
+        Component: Order,
       },
       {
         path: "/products",
@@ -42,7 +42,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Order,
+        Component: OrderAdmin,
       },
       {
         path: "products",

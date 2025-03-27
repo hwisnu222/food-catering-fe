@@ -6,18 +6,17 @@ import {
   IconButton,
   Typography,
   Stack,
-  Grid2,
   Grid,
   Button,
   Divider,
 } from "@mui/material";
 import React from "react";
 
-export default function Cart() {
+export default function Order() {
   return (
     <Container>
       <Typography variant="h5" gutterBottom>
-        Cart
+        Order
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={8}>

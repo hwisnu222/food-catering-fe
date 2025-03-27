@@ -34,8 +34,14 @@ export default function Product() {
         flexWrap="wrap"
       >
         {data?.categories?.map((item, index) => (
-          <Card key={index} sx={{ width: 100 }}>
-            <Box padding={3} flex={1} justifyContent="center" fullWidth>
+          <Card key={index} sx={{ width: 200 }}>
+            <Box
+              padding={3}
+              flex={1}
+              justifyContent="center"
+              fullWidth
+              className="capitalize font-medium"
+            >
               {item.name}
             </Box>
           </Card>
@@ -77,7 +83,7 @@ export default function Product() {
                 variant="contained"
                 startIcon={<ShoppingBagOutlined />}
               >
-                Add to Cart
+                Buy
               </Button>
             </CardActions>
           </Card>

@@ -38,7 +38,7 @@ export default function Header() {
         ))}
       </Stack>
       <Stack direction="row" gap={2}>
-        <IconButton href="/cart">
+        <IconButton href="/order">
           <LocalMall />
         </IconButton>
         <Button variant="contained" size="small">
