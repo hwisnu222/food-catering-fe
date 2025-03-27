@@ -13,6 +13,8 @@ import React from "react";
 import { GET_DETAIL_MENU } from "../graphql/queries/menu.query";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router";
+import { currencyFormat } from "../utils/currency";
+import { dietType } from "../constants/dietType.constant";
 
 export default function DetailProduct() {
   const { id } = useParams();
@@ -25,12 +27,10 @@ export default function DetailProduct() {
 
   const detail = dataDetail?.menuItem?.[0];
 
-  console.log(dataDetail);
-
   return (
     <Container marginTop={4}>
       <Card sx={{ width: "100%" }}>
-        <CardMedia sx={{ height: 140 }} image={detail?.image} title="menu" />
+        <CardMedia sx={{ height: 200 }} image={detail?.image} title="menu" />
         <CardContent>
           <Stack gap={2}>
             <Link href="/products/54" underline="none">
@@ -41,7 +41,7 @@ export default function DetailProduct() {
               className="font-extrabold"
               fontWeight={500}
             >
-              {detail?.basePrice}
+              {currencyFormat(detail?.basePrice || 0)}
             </Typography>
             <Typography fontWeight={700}>Description</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
@@ -53,7 +53,7 @@ export default function DetailProduct() {
             </Typography>
             <Typography fontWeight={700}>Dietary Type</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              {detail?.dietaryType}
+              {dietType[detail?.dietaryType]}
             </Typography>
           </Stack>
         </CardContent>
