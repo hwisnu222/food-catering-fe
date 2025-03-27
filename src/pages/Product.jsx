@@ -33,15 +33,17 @@ export default function Product() {
         marginY={2}
         marginBottom={6}
         flexWrap="wrap"
+        paddingY={2}
       >
         {data?.categories?.map((item, index) => (
-          <Card key={index} sx={{ width: 200 }}>
+          <Card key={index}>
             <Box
               padding={3}
               flex={1}
               justifyContent="center"
               fullWidth
               className="capitalize font-medium"
+              sx={{ width: 200 }}
             >
               {item.name}
             </Box>

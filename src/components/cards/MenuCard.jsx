@@ -10,6 +10,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { currencyFormat } from "../../utils/currency";
 
 export default function MenuCard({ menu }) {
   return (
@@ -21,10 +22,10 @@ export default function MenuCard({ menu }) {
             <Typography variant="h6">{menu.name}</Typography>
           </Link>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {menu.description}
+            {menu.description.slice(0, 25)}
           </Typography>
           <Typography variant="h5" className="font-extrabold" fontWeight={500}>
-            {menu.basePrice}
+            {currencyFormat(menu.basePrice)}
           </Typography>
         </Stack>
       </CardContent>

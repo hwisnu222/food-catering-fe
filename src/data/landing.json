@@ -1,0 +1,66 @@
+{
+  "services": [
+    {
+      "title": "Corporate Catering",
+      "description": "From office lunches to large corporate events, we offer professional service with delicious meals that will impress your colleagues and clients."
+    },
+    {
+      "title": "Wedding Catering",
+      "description": "Let us make your special day even more memorable with a customized menu designed to delight your guests."
+    },
+    {
+      "title": "Event Catering",
+      "description": "Whether it's a birthday party, anniversary, or any other event, we deliver fresh, flavorful dishes that suit your theme."
+    },
+    {
+      "title": "Drop-Off Catering",
+      "description": "Convenient and hassle-free catering for those who want to enjoy our gourmet meals at their venue without the need for full-service staff."
+    }
+  ],
+  "menu_items": [
+    {
+      "title": "Appetizers",
+      "description": "Light and flavorful bites to kick off your event."
+    },
+    {
+      "title": "Main Courses",
+      "description": "A variety of delicious and filling entrees, including options for all dietary needs (vegetarian, vegan, gluten-free, etc.)."
+    },
+    {
+      "title": "Sides & Salads",
+      "description": "Fresh, colorful, and full of flavor – perfect complements to your main course."
+    },
+    {
+      "title": "Desserts",
+      "description": "Sweet treats to end your event on a high note."
+    }
+  ],
+  "features": [
+    {
+      "title": "Fresh & Local Ingredients",
+      "description": "We use only the freshest ingredients sourced locally to ensure the highest quality meals."
+    },
+    {
+      "title": "Experienced Team",
+      "description": "Our team of professional chefs and servers are dedicated to making your event a success."
+    },
+    {
+      "title": "Tailored Experience",
+      "description": "We understand that every event is unique. That’s why we offer personalized menu options and flexible service packages to suit your needs."
+    },
+    {
+      "title": "Satisfaction Guarantee",
+      "description": "We’re committed to ensuring your event runs smoothly and your guests are satisfied with every bite."
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "The catering service provided by Food Catering was absolutely amazing! The food was fresh, beautifully presented, and everyone at our wedding loved it. Highly recommend!",
+      "author": "Sarah & John, Wedding Clients"
+    },
+    {
+      "quote": "Our corporate event was a hit, thanks to Food Catering. They delivered exceptional food on time, and the guests were impressed with the variety and taste. We'll definitely book again!",
+      "author": "David, Corporate Event Client"
+    }
+  ]
+}

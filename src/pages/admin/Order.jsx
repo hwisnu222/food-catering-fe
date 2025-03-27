@@ -3,6 +3,8 @@ import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useQuery } from "@apollo/client";
 import { GET_ORDERS } from "../../graphql/queries/orders.query";
+import { DateUtility } from "../../utils/date";
+import Modal from "../../components/modals/Modal";
 
 const columns = [
   {
@@ -24,11 +26,14 @@ const columns = [
     field: "orderDate",
     headerName: "Order Date",
     width: 300,
+    renderCell: ({ row }) => row.orderDate && DateUtility.format(row.orderDate),
   },
   {
     field: "deliveryDate",
     headerName: "Delivery Date",
     width: 300,
+    renderCell: ({ row }) =>
+      row.deliveryDate && DateUtility.format(row.deliveryDate),
   },
 
   {

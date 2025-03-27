@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import {
@@ -13,19 +13,29 @@ import {
   TextField,
 } from "@mui/material";
 import { GET_DETAIL_MENU } from "../graphql/queries/menu.query";
+import { CREATE_ORDER } from "../graphql/mutations/order.mutation";
+import { currencyFormat } from "../utils/currency";
+import useForm from "../hooks/useForm";
 
 const currentDate = new Date();
 const INITIAL_STATE = {
   name: "",
   deliveryDate: currentDate,
   deliveryAddress: "",
-  additionalNotes: "",
+  specialNotes: "",
   phoneNumber: null,
 };
 
 export default function Order() {
   const { id } = useParams();
+  let navigate = useNavigate();
   const [form, setForm] = useState(INITIAL_STATE);
+  const { errors, handleSubmit } = useForm({
+    name: form.name,
+    deliveryDate: form.deliveryDate,
+    deliveryAddress: form.deliveryAddress,
+    phoneNumber: form.phoneNumber,
+  });
 
   const { data } = useQuery(GET_DETAIL_MENU, {
     variables: {
@@ -33,7 +43,11 @@ export default function Order() {
     },
   });
 
-  // const [createOrder] = useMutation();
+  const [createOrder, { loading }] = useMutation(CREATE_ORDER, {
+    onCompleted: (data) => {
+      navigate(`/status-order/${data.createOrder.order.id}`);
+    },
+  });
 
   const detail = data?.menuItem;
   const totalPrice = detail?.reduce((a, c) => a + Number(c.basePrice), 0);
@@ -44,6 +58,15 @@ export default function Order() {
     setForm({
       ...form,
       [target.name]: target.value,
+    });
+  };
+
+  const handleSubmitForm = () => {
+    form.menuItemId = id;
+    createOrder({
+      variables: {
+        data: form,
+      },
     });
   };
 
@@ -64,6 +87,8 @@ export default function Order() {
                 name="name"
                 value={form.name}
                 onChange={handleChangeForm}
+                helperText={errors.name}
+                error={errors.name}
               />
               <Stack direction="row" gap={2}>
                 <TextField
@@ -71,8 +96,11 @@ export default function Order() {
                   label="Delivery Date"
                   fullWidth
                   name="deliveryDate"
+                  defaultValue={form.deliveryDate}
                   value={form.deliveryDate}
                   onChange={handleChangeForm}
+                  helperText={errors.deliveryDate}
+                  error={errors.deliveryDate}
                 />
                 <TextField
                   type="number"
@@ -81,6 +109,8 @@ export default function Order() {
                   name="phoneNumber"
                   value={form.phoneNumber}
                   onChange={handleChangeForm}
+                  helperText={errors.phoneNumber}
+                  error={errors.phoneNumber}
                 />
               </Stack>
               <TextField
@@ -90,13 +120,15 @@ export default function Order() {
                 name="deliveryAddress"
                 value={form.deliveryAddress}
                 onChange={handleChangeForm}
+                helperText={errors.deliveryAddress}
+                error={errors.deliveryAddress}
               />
               <TextField
                 label="Additional Notes"
                 multiline
                 rows={5}
-                name="additionalNotes"
-                value={form.additionalNotes}
+                name="specialNotes"
+                value={form.specialNotes}
                 onChange={handleChangeForm}
               />
             </Stack>
@@ -116,7 +148,7 @@ export default function Order() {
                   paddingY={2}
                 >
                   <Typography>{item.name}</Typography>
-                  <Typography>Rp {item.basePrice}</Typography>
+                  <Typography>{currencyFormat(item.basePrice)}</Typography>
                 </Stack>
               ))}
               <Divider />
@@ -126,11 +158,18 @@ export default function Order() {
                 paddingY={2}
               >
                 <Typography fontWeight={700}>Total</Typography>
-                <Typography fontWeight={700}>Rp {totalPrice}</Typography>
+                <Typography fontWeight={700}>
+                  {currencyFormat(totalPrice)}
+                </Typography>
               </Stack>
             </Stack>
 
-            <Button variant="contained" fullWidth>
+            <Button
+              variant="contained"
+              fullWidth
+              loading={loading}
+              onClick={() => handleSubmit(handleSubmitForm)}
+            >
               Purchase
             </Button>
           </Box>

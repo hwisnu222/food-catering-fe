@@ -8,6 +8,7 @@ import { createBrowserRouter } from "react-router";
 import AdminLayout from "../components/layouts/AdminLayout";
 import OrderAdmin from "../pages/admin/Order";
 import ProductList from "../pages/admin/Product";
+import StatusOrder from "../pages/StatusOrder";
 
 export const routes = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ export const routes = createBrowserRouter([
       {
         path: "/products/:id",
         Component: DetailProduct,
+      },
+
+      {
+        path: "/status-order/:id",
+        Component: StatusOrder,
       },
     ],
   },
