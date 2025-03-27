@@ -1,12 +1,47 @@
-# React + Vite
+# Food Catering FE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the front-end for the Food Catering website, built using React and Vite.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Docker
+- Docker Compose
+- Node.js (version 18 or later) - optional for local development
+- Git
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Before running the project, first clone the repository using the following command:
+
+```bash
+git clone https://github.com/hwisnu222/food-catering-fe.git
+cd food-catering-fe
+```
+
+Next, copy the `.env.example` file to create your `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+## Running the Project
+
+After installing the necessary packages, the next step is to run the project. To do this, use the following command:
+
+```bash
+docker compose up -d
+```
+
+Then, access the application in your browser at [http://localhost:5173](http://localhost:5173).
+
+## Run the Backend
+
+To run the backend project alongside the frontend, you also need to clone and run the backend repository. Use the following commands:
+
+```bash
+git clone https://github.com/hwisnu222/food-catering-be.git
+cd food-catering-be
+docker compose up -d
+```
+
+This will start the backend project, and both front-end and back-end will run simultaneously.
