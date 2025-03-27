@@ -9,7 +9,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { routes } from "./routes/routers.js";
 
 const client = new ApolloClient({
-  uri: import.meta.env.REACT_GRAPHQL_URL,
+  uri: import.meta.env.VITE_GRAPHQL_URL,
   cache: new InMemoryCache(),
 });
 
